@@ -4,7 +4,7 @@ pipeline {
         // Use your Jenkins credential ID for Docker Hub login.
         DOCKERHUB_CREDENTIALS = credentials('pilcrow3000-dockerhub')
         // Build and tag the image with your Docker Hub username.
-        IMAGE_NAME = "pilcrow3000/my-django-app:latest"
+        IMAGE_NAME = "pilcrow3000/django-app:latest"
     }
     stages {
         stage('Checkout') {
