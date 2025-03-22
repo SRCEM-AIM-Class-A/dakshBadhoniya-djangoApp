@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from the repository.
-                git url: 'https://github.com/SRCEM-AIM-Class-A/dakshBadhoniya-djangoApp.git', branch: 'main'
+                git url: 'https://github.com/SRCEM-AIM-Class-A/dakshBadhoniya-djangoApp.git', branch: ''main/sampleProject1''
             }
         }
         stage('Build Docker Image') {
