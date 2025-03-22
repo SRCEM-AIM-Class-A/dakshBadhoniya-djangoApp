@@ -1,18 +1,20 @@
-# Use the official Python image
-FROM python:3.11
+# Use official Python image as base
+FROM python:3.9-slim
 
-# Set the working directory
+# Set working directory inside the container
 WORKDIR /app
 
-# Copy the requirements file and install dependencies
+# Copy only requirements first (to leverage Docker caching)
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code
 COPY . .
 
-# Expose port 8000 (Django default)
+# Expose the port Django runs on
 EXPOSE 8000
 
-# Run the Django development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Run migrations and start Django server
+CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
